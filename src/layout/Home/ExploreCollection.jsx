@@ -28,14 +28,14 @@ const ExploreCollection = () => {
 
   return (
     <section className="py-16 md:px-26 px-6 bg-white text-center">
-      <h2 className="text-3xl font-bold mb-2">
+      {/* <h2 className="text-3xl font-bold mb-2">
         {firstWord}{" "}
         {restText && <span className="text-red-600">{restText}</span>}
       </h2>
       <hr className="md:w-102 md:ml-92 mb-4 border-black"></hr>
       <p className="text-gray-600 mb-10">
         Hand-picked styles for every vision and personality.
-      </p>
+      </p> */}
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 hover:cursor-pointer">
         {ourCollection.map((item, index) => (

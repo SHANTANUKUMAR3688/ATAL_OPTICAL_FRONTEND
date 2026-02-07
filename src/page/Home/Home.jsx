@@ -24,7 +24,7 @@ function Home() {
       <About/>
       <Frames/>
       <Video/>
-      <Trending/>
+      {/* <Trending/> */}
       <ProductGrid/>
       <Services/>
       <ModelViewer/>

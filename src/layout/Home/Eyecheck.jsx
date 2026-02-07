@@ -1,39 +1,27 @@
-import React, { useEffect, useState } from "react";
 import eyecheck from "../../assets/category/eyecheck.jpeg";
 import eyecheck2 from "../../assets/category/eyecheck2.png";
 import CountUp from 'react-countup';
 import { FiArrowRight } from 'react-icons/fi';
-import API from "../../API/Api";
+
 const Eyecheck = () => {
-  const [eyeCheckData, setEyeCheckData] = useState([{}])
-  const fetchEyeCheck = async () => {
-    try {
-      const response = await API.get("/getEyecheck", {
-        headers: {
-          "Content-Type": "application/json",
-        }
-      })
-      setEyeCheckData(response.data.eyeCheck[0])
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    fetchEyeCheck()
-  }, [])
-
   return (
     <section className="flex flex-col md:flex-row items-center justify-between px-14 py-12 bg-white gap-x-30">
       {/* Left Text Section */}
       <div className="mb-8 md:mb-0 md:ml-10 md:w-1/2">
         <h2 className="text-3xl font-semibold mb-4 text-gray-800">
-
-          {eyeCheckData.heading}
+           Eye Check Details
         </h2>
         <hr className="w-52 mb-8 border-black"></hr>
         <p className="text-gray-600 mb-6 leading-relaxed">
-          {eyeCheckData.description}
+          At the Atal Optical, we offer a wide range of advanced treatments
+          to address the root causes of dry eye and restore lasting comfort. Our
+          personalized approach begins with a thorough evaluation to determine
+          the best course of action for each patient. Whether you're dealing
+          with mild irritation or more complex symptoms, our expert team is
+          equipped with the latest technologies and treatment options to help
+          you find relief. Explore our specialized services below and discover
+          how we can create a customized treatment plan tailored to your unique
+          needs.
         </p>
         <button className="flex items-center gap-4 text-white font-medium bg-red-600 px-4 py-2 rounded mr-22 hover:bg-black transition-colors duration-300 hover:cursor-pointer">
           Learn More

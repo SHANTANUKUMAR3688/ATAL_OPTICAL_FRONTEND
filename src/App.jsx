@@ -25,6 +25,7 @@ import DocumentUploadForm from "./page/form/DocumentUploadForm";
 import Checkout from "./page/checkout/Checkout";
 import OrderPlaced from "./page/order/OrderPlaced";
 import Register from "./page/register/Register";
+import Contact from "./page/Contact/Contact";
 
 //  ProtectedRoute
 import ProtectedRoute from "./page/protectedRoute/ProtectedRoute";
@@ -40,6 +41,7 @@ const router = createBrowserRouter([
       { path: "/register", element: <Register /> },
       { path: "/login", element: <Login /> },
       { path: "/faq", element: <FAQ /> },
+      { path: "/contact", element: <Contact/> },
       { path: "/privacy-policy", element: <PrivacyPolicy /> },
       { path: "/allproduct", element: <Product /> },
       { path: "/disclaimer", element: <DisclaimerPage /> },
