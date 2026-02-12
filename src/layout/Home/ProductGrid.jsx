@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { FaHeart } from "react-icons/fa";
 import { FiArrowRight } from "react-icons/fi";
+import { Link } from "react-router-dom";
 const ProductCard = ({ product }) => {
   const [imageSrc, setImageSrc] = useState(product.mainImage);
 
@@ -126,12 +127,14 @@ const ProductGrid = () => {
         <h2 className="text-2xl md:text-3xl font-bold text-black md:ml-22 ml-6">
           Best Seller
         </h2>
+        <Link to="/allproduct">
         <button className="flex items-center gap-4 text-white font-medium bg-red-600 px-4 py-2 rounded md:mr-22 mr-6 hover:bg-black transition-colors duration-300 hover:cursor-pointer">
           FIND MORE
           <span className="bg-white text-black p-1 rounded-full">
             <FiArrowRight size={16} className="hover:rotate-[-40deg]" />
           </span>
         </button>
+        </Link>
       </div>
       <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 md:px-16 justify-items-center gap-6 md:gap-0">
         {products.map((product, idx) => (

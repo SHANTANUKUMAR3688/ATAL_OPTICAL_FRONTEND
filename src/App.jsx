@@ -15,7 +15,6 @@ import EyeglassesContactPolicy from "./page/eyeglasses-contact-policy/Eyeglasses
 import RightsEnforcementPolicy from "./page/rights-enforcement-policy/RightsEnforcementPolicy";
 import Dashboardlayout from "./layout/Dashboardlayout";
 import Faq from "./components/Faq";
-import About from "./components/About";
 import CustHome from "./components/CustHome";
 import ViewCart from "./page/Cart/ViewCart";
 import Product from "./page/allproduct/Product";
@@ -26,10 +25,12 @@ import Checkout from "./page/checkout/Checkout";
 import OrderPlaced from "./page/order/OrderPlaced";
 import Register from "./page/register/Register";
 import Contact from "./page/Contact/Contact";
+import About from "./page/about/About";
 
 //  ProtectedRoute
 import ProtectedRoute from "./page/protectedRoute/ProtectedRoute";
 import Login from "./page/login/Login";
+import Service from "./page/Service/Service";
 
 
 const router = createBrowserRouter([
@@ -42,6 +43,8 @@ const router = createBrowserRouter([
       { path: "/login", element: <Login /> },
       { path: "/faq", element: <FAQ /> },
       { path: "/contact", element: <Contact/> },
+      { path: "/about", element: <About/> },
+      { path: "/service", element: <Service/> },
       { path: "/privacy-policy", element: <PrivacyPolicy /> },
       { path: "/allproduct", element: <Product /> },
       { path: "/disclaimer", element: <DisclaimerPage /> },
@@ -109,7 +112,6 @@ const router = createBrowserRouter([
     ),
     children: [
       { path: "/dash", element: <CustHome /> },
-      { path: "/dash/about", element: <About /> },
       { path: "/dash/faq", element: <Faq /> },
       { path: "*", element: <Page /> },
     ],

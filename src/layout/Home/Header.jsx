@@ -149,14 +149,19 @@ function Header() {
             <Link to="/">
               <li className="cursor-pointer hover:text-red-600">HOME</li>
             </Link>
+            <Link to="/about">
             <li className="cursor-pointer hover:text-red-600">ABOUT US</li>
+            </Link>
+            <Link to="/service">
             <li className="cursor-pointer hover:text-red-600">SERVICES</li>
-            <li className="cursor-pointer hover:text-red-600">PROMOTION</li>
+            </Link>
             <li className="cursor-pointer hover:text-red-600">CATEGORY</li>
             <Link to="/faq">
               <li className="cursor-pointer hover:text-red-600">FAQ</li>
             </Link>
-            <li className="cursor-pointer hover:text-red-600">COLLECTIONS</li>
+            <Link to="/allproduct">
+            <li className="cursor-pointer hover:text-red-600">COLLECTION EDITION</li>
+            </Link>
             <Link to="/contact">
             <li className="cursor-pointer hover:text-black hover:bg-white bg-red-600 py-1 px-4 rounded-xl">
               CONTACT US

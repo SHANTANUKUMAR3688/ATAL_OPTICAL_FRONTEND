@@ -8,22 +8,20 @@ import { addToCart } from "../../redux/cartSlice";
 
 function Product() {
   const location = useLocation();
-  // const { category, subcategory } = location.state;
+  //const { category } = location.state;
 
   const [product, setproduct] = useState([]);
 
   const fetchproduct = async () => {
     try {
-      const res = await API.get("/getallsubcategory",
-        {
-          headers: {
+      const res = await API.get("/getallsubcategory", {
+        headers: {
           "Content-Type": "application/json",
           // "Authorization": `Bearer ${admintoken}`,
-        }
-        }
-      );
+        },
+      });
       setproduct(res.data.subcategory || []);
-       console.log(res.data);
+      console.log(res.data);
     } catch (err) {
       console.error("Failed to fetch reviews:", err);
     }
@@ -32,21 +30,18 @@ function Product() {
     fetchproduct();
   }, []);
 
-
   const dispatch = useDispatch();
   return (
-    <>
-      <div className="mt-5 ml-10 font-bold text-2xl">
-          {product[0]?.category}{" "}FRAMES
-        </div>
+    <div className="bg-indigo-100">
+      <div className="pt-5 ml-10 font-bold text-2xl">FRAMES</div>
       <div className="grid grid-cols-4 px-10 py-8 ml-10">
         {product.map((data, index) => (
           <div
-            className="w-64 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-4 flex flex-col items-center hover:shadow-red-500 hover:scale-105 hover:cursor-pointer 
-            shadow-gray-600"
+            className="w-[280px] bg-[#faf6f2] rounded-md overflow-hidden text-center mb-10 hover:shadow-red-500 hover:scale-105 hover:cursor-pointer"
             key={index}
           >
             {/* Image */}
+            <div className="bg-white">
               <Link to="/cart" state={{ ID: data._id }}>
                 <img
                   src={`${IMAGE_URL + data.image}`}
@@ -56,27 +51,24 @@ function Product() {
                   decoding="async"
                 />
               </Link>
-            
-
-            {/* Title and Price */}
-            <div className="flex justify-between items-center w-full mt-3">
-              <h2 className="font-bold text-gray-800 text-base capitalize">
-                {data.name}
-              </h2>
-              <FaHeart className="mr-1 fill-gray-500 hover:fill-red-600 hover:cursor-pointer text-2xl" />
             </div>
 
-            {/* Rating & Button */}
-            <div className="flex justify-between items-center w-full mt-3">
-              <div className="flex items-center gap-1">
-                <span className="line-through">$
-                  {data.previous_price}
-                  </span>
-                <span className="text-red-600 font-semibold">
-                  $
-                  {data.current_price}
+            {/* Info */}
+            <div className="p-4">
+              <h3 className="text-lg font-semibold mb-2">{data.name}</h3>
+
+              <div className="flex justify-center items-center gap-2 mb-1">
+                <span className="text-green-700 font-semibold">
+                  ${data.current_price}
                 </span>
+
+                {data.previous_price && (
+                  <span className="text-red-600 line-through">
+                    ${data.previous_price}
+                  </span>
+                )}
               </div>
+
               <button
                 onClick={() => {
                   dispatch(
@@ -85,7 +77,7 @@ function Product() {
                       name: data.name,
                       price: data.current_price,
                       image: `${IMAGE_URL + data.image}`,
-                    })
+                    }),
                   );
                   Swal.fire({
                     toast: true,
@@ -96,15 +88,52 @@ function Product() {
                     timer: 3000,
                   });
                 }}
-                className="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded-lg text-sm font-medium hover:cursor-pointer"
+                className="w-full bg-red-500 text-white py-2 text-sm font-medium hover:opacity-90 transition"
               >
-                Add to cart
+                Add To Cart
               </button>
             </div>
           </div>
-         ))}
+        ))}
       </div>
-    </>
+      <section className="w-full bg-black p-6 md:p-10">
+        <div className="border border-[#e6dccf] p-6 md:p-10">
+          <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-start">
+            {/* Left Title */}
+            <div className="md:w-1/3 text-center mt-4">
+              <h2 className="text-[#e6dccf] font-serif text-3xl md:text-5xl leading-tight">
+                COLLECTORS
+                <br />
+                EDITION
+              </h2>
+            </div>
+
+            {/* Right Content */}
+            <div className="md:w-2/3 text-[#e6dccf] space-y-4 leading-relaxed">
+              <p>
+                You may come across some brands here which you haven&apos;t
+                heard of – and that&apos;s the beauty of our collector&apos;s
+                edition. Our mission is to bring you the{" "}
+                <span className="font-semibold">
+                  best and most unique eyewear brands, handpicked by our team
+                  from all over the world.
+                </span>
+              </p>
+
+              <p>
+                Here, we&apos;re not just looking for big names, we&apos;re
+                focused on collections that reflect our eye for{" "}
+                <span className="font-semibold">
+                  quality, design and distinctiveness.
+                </span>{" "}
+                We make sure to find the finest eyewear, thoughtfully curated
+                for you.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
   );
 }
 

@@ -63,45 +63,12 @@ const Frames = () => {
             </div>
           </Link>
         ))} */}
-      
-      
-      <Link
-            to="/allproduct"
-            //key={index}
-            // state={{
-            //   category: frame.cat_sec,
-            //   subcategory: frame.subCategoryName,
-            // }}
-          >
-            <div className="flip-card">
-              <div className="flip-card-inner">
-                <div className="flip-card-front overflow-hidden">
-                  <img
-                    src={contactlens}
-                    loading="lazy"
-                    decoding="async"
-                    alt="front"
-                    className="w-full h-full object-cover rounded-xl"
-                  />
-                </div>
-
-                <div className="flip-card-back bg-red-600 text-white shadow-xl p-6 rounded-xl flex items-center justify-center font-medium">
-                  <div>Contact Lenses are a convenient and effective alternative to traditional eyeglasses, offering clear vision without the need for frames. They sit directly on the eye’s surface and are available in a wide range of types, including daily disposables, extended wear, toric lenses for astigmatism, and multifocal lenses for presbyopia.</div>
-                </div>
-              </div>
-              <div className="flex justify-center md:mb-0 mb-10 font-semibold text-4xl">
-                <div>Contact Lenses</div>
-              </div>
-            </div>
-          </Link>
 
           <Link
             to="/allproduct"
-            //key={index}
-            // state={{
-            //   category: frame.cat_sec,
-            //   subcategory: frame.subCategoryName,
-            // }}
+            state={{
+              category: "MEN"
+            }}
           >
             <div className="flip-card">
               <div className="flip-card-inner">
@@ -128,11 +95,9 @@ const Frames = () => {
 
           <Link
             to="/allproduct"
-            // key={index}
-            // state={{
-            //   category: frame.cat_sec,
-            //   subcategory: frame.subCategoryName,
-            // }}
+            state={{
+              category: "WOMEN"
+            }}
           >
             <div className="flip-card">
               <div className="flip-card-inner">
@@ -152,6 +117,34 @@ const Frames = () => {
               </div>
               <div className="flex justify-center md:mb-0 mb-10 font-semibold text-4xl">
                 <div>Women's Frames</div>
+              </div>
+            </div>
+          </Link>
+
+          <Link
+            to="/allproduct"
+            state={{
+              category: "LENS"
+            }}
+          >
+            <div className="flip-card">
+              <div className="flip-card-inner">
+                <div className="flip-card-front overflow-hidden">
+                  <img
+                    src={contactlens}
+                    loading="lazy"
+                    decoding="async"
+                    alt="front"
+                    className="w-full h-full object-cover rounded-xl"
+                  />
+                </div>
+
+                <div className="flip-card-back bg-red-600 text-white shadow-xl p-6 rounded-xl flex items-center justify-center font-medium">
+                  <div>Contact Lenses are a convenient and effective alternative to traditional eyeglasses, offering clear vision without the need for frames. They sit directly on the eye’s surface and are available in a wide range of types, including daily disposables, extended wear, toric lenses for astigmatism, and multifocal lenses for presbyopia.</div>
+                </div>
+              </div>
+              <div className="flex justify-center md:mb-0 mb-10 font-semibold text-4xl">
+                <div>Contact Lenses</div>
               </div>
             </div>
           </Link>
