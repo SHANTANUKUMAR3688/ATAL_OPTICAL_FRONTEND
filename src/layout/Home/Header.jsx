@@ -155,7 +155,7 @@ function Header() {
             <Link to="/service">
             <li className="cursor-pointer hover:text-red-600">SERVICES</li>
             </Link>
-            <li className="cursor-pointer hover:text-red-600">CATEGORY</li>
+            {/* <li className="cursor-pointer hover:text-red-600">CATEGORY</li> */}
             <Link to="/faq">
               <li className="cursor-pointer hover:text-red-600">FAQ</li>
             </Link>
@@ -203,28 +203,28 @@ function Header() {
         </div>
         <ul className="flex flex-col gap-4 p-4 text-lg font-semibold">
           <Link
-            to="/"
-            onClick={() => setSidebarOpen(false)}
+            to="/" onClick={() => setSidebarOpen(false)}
             className="cursor-pointer hover:text-red-600"
           >
             HOME
           </Link>
-          <li className="cursor-pointer hover:text-red-600">ABOUT US</li>
-          <li className="cursor-pointer hover:text-red-600">SERVICES</li>
-          <li className="cursor-pointer hover:text-red-600">PROMOTION</li>
-          <li className="cursor-pointer hover:text-red-600">CATEGORY</li>
-          <li className="cursor-pointer hover:text-red-600">CONTACT US</li>
-          <Link
-            to="/faq"
-            onClick={() => setSidebarOpen(false)}
-            className="cursor-pointer hover:text-red-600"
-          >
-            FAQ
-          </Link>
-          <li className="cursor-pointer hover:text-red-600">COLLECTIONS</li>
-          <li className="bg-red-600 py-2 px-4 rounded-lg text-center cursor-pointer">
-            BOOK EYE EXAM
-          </li>
+          <Link to="/about" onClick={() => setSidebarOpen(false)}>
+            <li className="cursor-pointer hover:text-red-600">ABOUT US</li>
+            </Link>
+            <Link to="/service" onClick={() => setSidebarOpen(false)}>
+            <li className="cursor-pointer hover:text-red-600">SERVICES</li>
+            </Link>
+            {/* <li className="cursor-pointer hover:text-red-600">CATEGORY</li> */}
+            <Link to="/faq" onClick={() => setSidebarOpen(false)}>
+              <li className="cursor-pointer hover:text-red-600">FAQ</li>
+            </Link>
+            <Link to="/allproduct" onClick={() => setSidebarOpen(false)}>
+            <li className="cursor-pointer hover:text-red-600">COLLECTION EDITION</li>
+            </Link>
+            <Link to="/contact" onClick={() => setSidebarOpen(false)}>
+            <li className="cursor-pointer hover:text-black hover:bg-white bg-red-600 py-1 px-4 rounded-xl">
+              CONTACT US
+            </li></Link>
         </ul>
       </div>
 

@@ -34,7 +34,7 @@ function Product() {
   return (
     <div className="bg-indigo-100">
       <div className="pt-5 ml-10 font-bold text-2xl">FRAMES</div>
-      <div className="grid grid-cols-4 px-10 py-8 ml-10">
+      <div className="grid md:grid-cols-4 grid-cols-1 px-10 py-8 ml-10">
         {product.map((data, index) => (
           <div
             className="w-[280px] bg-[#faf6f2] rounded-md overflow-hidden text-center mb-10 hover:shadow-red-500 hover:scale-105 hover:cursor-pointer"
