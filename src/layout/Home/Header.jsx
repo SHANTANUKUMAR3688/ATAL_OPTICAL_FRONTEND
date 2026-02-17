@@ -180,6 +180,47 @@ function Header() {
             loading="lazy"
             decoding="async"
           />
+          
+           <div className="flex items-center gap-6 text-2xl">
+            {/* <FaHeart className="text-red-600 cursor-pointer hover:text-black" /> */}
+
+            {/* Cart */}
+            <div className="relative">
+              <FaCartShopping
+                onClick={() => setCartOpen(true)}
+                className="text-red-600 cursor-pointer hover:text-black text-2xl"
+              />
+              {totalQuantity > 0 && (
+                <span className="absolute -top-2 -right-2 bg-black text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">
+                  {totalQuantity}
+                </span>
+              )}
+            </div>
+
+            {/* Auth Section */}
+            {!user ? (
+              <div
+                onClick={handleLogin}
+                className="flex items-center gap-1 text-red-600 cursor-pointer hover:text-black"
+              >
+                <FaUser />
+                <span className="hover:underline">Sign In</span>
+              </div>
+            ) : (
+              <div className="flex items-center gap-3">
+                {/* user image */}
+                <FaUser className="text-red-600 hover:text-black" />
+                {/* logout button */}
+                <button
+                  onClick={handleLogout}
+                  className="px-4 py-2 rounded-lg bg-red-600 text-white text-sm hover:bg-black"
+                >
+                  Logout
+                </button>
+              </div>
+            )}
+          </div>
+
           <FaBars
             size={24}
             className="text-black cursor-pointer"
@@ -227,7 +268,8 @@ function Header() {
             </li></Link>
         </ul>
       </div>
-
+      
+      
       {/* Cart Drawer */}
       <CartDrawer isOpen={cartOpen} onClose={() => setCartOpen(false)} />
 

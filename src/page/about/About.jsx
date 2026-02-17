@@ -30,11 +30,11 @@ function About() {
     </div>
    
     <section>
-    <div className="flex flex-row gap-8 mx-14 my-14">
+    <div className="flex md:flex-row flex-col gap-8 mx-14 my-14">
     <div>
       <img src={about3} alt="About Us" className="h-180 object-cover rounded-xl w-250" />
     </div>
-    <div className="space-y-7 mt-46 text-lg">
+    <div className="space-y-7 md:mt-46 mt-10 text-lg">
     <p className="text-4xl font-semibold text-center tracking-tighter italic">
       Identity
     </p>
@@ -52,8 +52,8 @@ function About() {
     </section>
      <hr className="border-t border-gray-300 my-8 mx-10" />
     <section>
-    <div className="flex flex-row gap-8 mx-14 my-14">
-    <div className="space-y-7 w-1/2 mt-26 text-lg">
+    <div className="flex md:flex-row flex-col gap-8 mx-14 my-14">
+    <div className="space-y-7 md:w-1/2 md:mt-26 mt-10 text-lg">
     <p className="text-4xl font-semibold text-center tracking-tighter italic">
       Work
     </p>
@@ -74,11 +74,11 @@ function About() {
     </section>
     <hr className="border-t border-gray-300 my-8 mx-10" />
     <section>
-    <div className="flex flex-row gap-8 mx-14 my-14">
+    <div className="flex md:flex-row flex-col gap-8 mx-14 my-14">
     <div>
       <img src={about1} alt="About Us" className="w-full h-full object-cover rounded-xl"/>
     </div>
-    <div className="space-y-7 w-1/2 mt-36 text-lg">
+    <div className="space-y-7 md:w-1/2 md:mt-36 mt-10 text-lg">
     <p className="text-4xl font-semibold text-center tracking-tighter italic">
       Presence
     </p>
@@ -110,7 +110,7 @@ function About() {
       </div>
 
       {/* Content */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-14 mx-24">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-14 md:mx-24 mx-2">
         {/* Item 1 */}
         <div>
           <span className="text-2xl opacity-80">01</span>

@@ -80,7 +80,7 @@ const TestimonialsSlider = () => {
     return (
         <section className="py-16 px-6 bg-gray-100 text-center">
             <h3 className="text-3xl font-bold">What Our <span className="text-red-600">Customers Say</span></h3>
-            <hr className='mb-12 mt-2 w-106 ml-110 border-black'></hr>
+            <hr className='mb-12 mt-2 md:w-106 w-60 md:ml-110 ml-15 border-black'></hr>
             <Slider {...settings}>
                 {testimonials.map((item, index) => (
                     <div key={index} className="px-6">
