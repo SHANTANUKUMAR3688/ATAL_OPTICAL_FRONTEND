@@ -77,7 +77,7 @@ const Footer = () => {
                         <div className="text-xl">Brompton west</div>
                     </div>
                     <p className="max-w-[200px] mt-1 ">
-                        10906 Hurontario St, Unit D7 Brampton, ON L7A 3R9 905-970-9444
+                        10906 Hurontario St, Unit D7 Brampton, ON L7A 3R9 909-970-9444
                     </p>
                     <div className="flex items-center gap-2 text-red-600 mt-4">
                         <div><FaMapMarkedAlt className="text-3xl"/></div>
@@ -94,7 +94,7 @@ const Footer = () => {
                     <p>copyright &copy; 2025 Atal Optical. All rights reserved</p>
                 </div>
                 <div>
-                    <p>Developed By | World WebLogic</p>
+                    <p>Developed By | SHANTANU</p>
                 </div>
             </div>
 
