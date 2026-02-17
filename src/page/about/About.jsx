@@ -32,7 +32,7 @@ function About() {
     <section>
     <div className="flex md:flex-row flex-col gap-8 mx-14 my-14">
     <div>
-      <img src={about3} alt="About Us" className="h-180 object-cover rounded-xl w-250" />
+      <img src={about3} alt="About Us" className="md:h-180 h-100 object-cover rounded-xl w-250" />
     </div>
     <div className="space-y-7 md:mt-46 mt-10 text-lg">
     <p className="text-4xl font-semibold text-center tracking-tighter italic">

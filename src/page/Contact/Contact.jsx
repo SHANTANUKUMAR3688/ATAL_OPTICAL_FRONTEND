@@ -24,6 +24,7 @@ function Contact() {
       subtitle: "+91 85058 37891, +91 1204645733",
     },
   ];
+  
   return (
     <>
       <div
@@ -44,10 +45,10 @@ function Contact() {
         </motion.div>
       </div>
 
-      <div className="grid grid-cols-2 ">
-        <div className="mt-14 ml-16">
+      <div className="grid md:grid-cols-2 grid-cols-1">
+        <div className="mt-14 md:ml-16 ml-10 mr-10">
           <p className="text-5xl font-Marcellus font-medium">You tell us. We listen.</p>
-          <hr className="mt-2 mb-4 w-122 border-t-2"/>
+          <hr className="mt-2 mb-4 md:w-122 w-80 border-t-2"/>
           <p className="text-justify font-serif mb-4">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
@@ -58,12 +59,12 @@ function Contact() {
             culpa qui officia deserunt mollit anim id est laborum.
           </p>
           <div className="mb-6">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.4679444636968!2d77.37455947349697!3d28.615734231100813!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce5d9b356b8ed%3A0x49adf36c8f202317!2sWorld%20WebLogic!5e0!3m2!1sen!2sin!4v1747035730974!5m2!1sen!2sin" width="600" height="350" allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" className=""></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.4679444636968!2d77.37455947349697!3d28.615734231100813!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce5d9b356b8ed%3A0x49adf36c8f202317!2sWorld%20WebLogic!5e0!3m2!1sen!2sin!4v1747035730974!5m2!1sen!2sin"  className="w-[350px] md:w-[600px] h-[300px] md:h-[350px]" allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" ></iframe>
           </div>
         </div>
 
         <div>
-          <div className="max-w-xl mt-28 p-6 mb-6 ml-8 bg-white rounded-2xl shadow-lg">
+          <div className="max-w-xl md:mt-28 mt-10 p-6 mb-6 md:ml-8 mx-6 bg-white rounded-2xl shadow-lg">
             <form className="space-y-4">
               <div className="flex flex-col sm:flex-row sm:space-x-4">
                 <div className="w-full">
