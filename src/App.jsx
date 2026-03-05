@@ -21,7 +21,6 @@ import Product from "./page/allproduct/Product";
 
 import InsuranceClaimForm from "./page/form/InsuranceClaimForm";
 import DocumentUploadForm from "./page/form/DocumentUploadForm";
-import Checkout from "./page/checkout/Checkout";
 import OrderPlaced from "./page/order/OrderPlaced";
 import Register from "./page/register/Register";
 import Contact from "./page/Contact/Contact";
@@ -31,6 +30,7 @@ import About from "./page/about/About";
 import ProtectedRoute from "./page/protectedRoute/ProtectedRoute";
 import Login from "./page/login/Login";
 import Service from "./page/Service/Service";
+import Payment from "./page/checkout/payment";
 
 
 const router = createBrowserRouter([
@@ -39,8 +39,7 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       { path: "/", element: <Home /> },
-      { path: "/register", element: <Register /> },
-      { path: "/login", element: <Login /> },
+      
       { path: "/faq", element: <FAQ /> },
       { path: "/contact", element: <Contact/> },
       { path: "/about", element: <About/> },
@@ -75,7 +74,7 @@ const router = createBrowserRouter([
         path: "/checkout",
         element: (
           // <ProtectedRoute>
-          <Checkout />
+          <Payment/>
           // </ProtectedRoute>
         ),
       },
@@ -101,14 +100,16 @@ const router = createBrowserRouter([
       { path: "*", element: <Page /> },
     ],
   },
+    { path: "/register", element: <Register /> },
+    { path: "/login", element: <Login /> },
 
   // ✅ Protected Dashboard
   {
     path: "/dash",
     element: (
-      <ProtectedRoute>
+      // <ProtectedRoute>
         <Dashboardlayout />
-      </ProtectedRoute>
+      //</ProtectedRoute>
     ),
     children: [
       { path: "/dash", element: <CustHome /> },

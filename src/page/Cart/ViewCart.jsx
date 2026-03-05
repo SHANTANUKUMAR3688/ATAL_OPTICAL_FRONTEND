@@ -1,4 +1,5 @@
 import React from 'react';
+import Swal from 'sweetalert2'
 import { useSelector, useDispatch } from 'react-redux';
 import {
   incrementQuantity,
@@ -6,6 +7,7 @@ import {
   removeFromCart,
 } from '../../redux/cartSlice';
 import { Link, useNavigate } from 'react-router-dom';
+import API from '../../API/Api';
 
 const ViewCart = () => {
   const cartItems = useSelector((state) => state.cart.items);
@@ -13,14 +15,46 @@ const ViewCart = () => {
   const navigate = useNavigate();
 
   const subtotal = cartItems.reduce(
-    (total, item) => total + item.price * item.quantity,
-    0
+    (total, item) => total + item.price * item.quantity,0
   );
 
   const handleCheckout = () => {
     navigate("/checkout")
   }
+  
+  const handlePayment = async () => {
+    const { data } = await API.post("/payment/create-order",
+      { amount: subtotal.toFixed(2) }
+    );
 
+    const options = {
+      key: "rzp_test_SM2jjIdLh0zHNR",
+      amount: data.order.amount,
+      currency: "INR",
+      name: "Shantanu Store",
+      description: "Test Transaction",
+      order_id: data.order.id,
+      handler: async function (response) {
+        await API.post("/payment/verify-payment",response);
+        Swal.fire({
+          title: "Payment Successful!",
+          text: "Your payment has been processed successfully.",
+          icon: "success"
+        });
+      },
+      prefill: {
+        name: "Shantanu",
+        email: "test@gmail.com",
+        contact: "9999999999",
+      },
+      theme: {
+        color: "#3399cc",
+      },
+    };
+    const rzp = new Razorpay(options);
+    rzp.open();
+    navigate("/checkout")
+  };
   return (
     <div className="container mx-auto px-4 py-10">
       <h2 className="text-3xl font-bold mb-8">Your Shopping Cart</h2>
@@ -95,7 +129,7 @@ const ViewCart = () => {
               <span>Total:</span>
               <span>${subtotal.toFixed(2)}</span>
             </div>
-            <button onClick={handleCheckout} className="mt-6 w-full bg-black text-white py-3 rounded hover:bg-gray-900 transition">
+            <button onClick={handlePayment} className="mt-6 w-full bg-black text-white py-3 rounded hover:bg-gray-900 transition">
               Proceed to Checkout
             </button>
           </div>

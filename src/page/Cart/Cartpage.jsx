@@ -9,7 +9,6 @@ import Insurance from "./Insurance";
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import API, { IMAGE_URL } from "../../API/Api";
-// import ReactImageMagnify from 'react-image-magnify';
 import Swal from "sweetalert2";
 
 const Cartpage = () => {

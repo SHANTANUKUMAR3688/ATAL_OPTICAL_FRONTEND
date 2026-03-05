@@ -1,7 +1,8 @@
 import contact from "../../assets/about/contact.jpg";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { FaEnvelope, FaMapMarkedAlt, FaPhoneAlt } from "react-icons/fa";
+import API from '../../API/Api';
 
 function Contact() {
   const textRef = useRef();
@@ -24,7 +25,88 @@ function Contact() {
       subtitle: "+91 85058 37891, +91 1204645733",
     },
   ];
-  
+
+  const [firstname,setfirstname]=useState("");
+  const [lastname,setlastname]=useState("");
+  const [email,setemail]=useState("");
+  const [message,setmessage]=useState("");
+  const [subject,setsubject]=useState("");
+
+  const handleSendMail = async (e) => {
+    e.preventDefault();
+        try {
+          // console.log(firstname,lastname,email,message,subject);
+            const response = await API.post("/send-mail", {
+                to:'skr36880@gmail.com',
+                subject: "Action Required: Please Review Customer",
+                html: generateHtmlTemplate()
+            });
+            console.log(response.data);
+            //toast.success(response.data.message);
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+  const generateHtmlTemplate = () => {
+        return `
+   <!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      .container {
+        font-family: Arial, sans-serif;
+        max-width: 600px;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        background-color: #f9f9f9;
+      }
+    .header {
+        background-color:rgb(55, 105, 180);
+        color: white;
+        padding: 15px;
+        text-align: center;
+        border-radius: 8px 8px 0 0;
+      }
+      .content {
+        padding: 20px;
+        color: #333;
+      }
+      .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        margin: 10px 5px 0;
+        font-size: 16px;
+        text-decoration: none;
+        border-radius: 5px;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h2>Customer Action Required</h2>
+      </div>
+      <div class="content">
+        <p>Dear Super Manager,</p>
+        <p>
+          A new customer has been added by <br>
+          <strong>Manager Name :</strong> manager <br>
+          <strong>Manager Email : </strong>manager email and requires your action.
+        </p>
+        <strong>Customer Name:</strong> cusgtomer <br>
+        <strong>Customer Email: </strong> customer mail</p>
+
+        <p style="margin-top: 20px;">Thanks,<br/>Your Team</p>
+      </div>
+    </div>
+  </body>
+</html>
+  `;
+    };
   return (
     <>
       <div
@@ -37,7 +119,7 @@ function Contact() {
         <motion.div
           ref={textRef}
           style={{ y: y }}
-          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-center z-20"
+          className="relative top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-center z-20"
         >
           <p className="font-Marcellus text-4xl md:text-6xl mb-8 underline underline-offset-8 font-extralight">
             Contact Us
@@ -73,6 +155,9 @@ function Contact() {
                   </label>
                   <input
                     type="text"
+                    id="firstname"
+                    value={firstname} 
+                    onChange={(e)=>setfirstname(e.target.value)}
                     placeholder="First Name"
                     className="w-full rounded border border-gray-300 px-3 py-2 shadow-sm focus:outline-none focus:ring-1 focus:ring-red-500"
                   />
@@ -83,6 +168,9 @@ function Contact() {
                   </label>
                   <input
                     type="text"
+                    value={lastname} 
+                    onChange={(e)=>setlastname(e.target.value)}
+                    id="lastname"
                     placeholder="Last Name"
                     className="w-full rounded border border-gray-300 px-3 py-2 shadow-sm focus:outline-none focus:ring-1 focus:ring-red-500"
                   />
@@ -95,6 +183,9 @@ function Contact() {
                 </label>
                 <input
                   type="email"
+                  id="email"
+                  value={email} 
+                  onChange={(e)=>setemail(e.target.value)}
                   placeholder="Email Address"
                   className="w-full rounded border border-gray-300 px-3 py-2 shadow-sm focus:outline-none focus:ring-1 focus:ring-red-500"
                 />
@@ -106,6 +197,9 @@ function Contact() {
                 </label>
                 <input
                   type="text"
+                  id="subject"
+                  value={subject}
+                  onChange={(e)=>setsubject(e.target.value)}
                   placeholder="Subject"
                   className="w-full rounded border border-gray-300 px-3 py-2 shadow-sm focus:outline-none focus:ring-1 focus:ring-red-500"
                 />
@@ -117,13 +211,16 @@ function Contact() {
                 </label>
                 <textarea
                   rows="4"
+                  id="message"
+                  value={message}
+                  onChange={(e)=>setmessage(e.target.value)}
                   placeholder="Your Message"
                   className="w-full rounded border border-gray-300 px-3 py-2 shadow-sm focus:outline-none focus:ring-1 focus:ring-red-500"
                 ></textarea>
               </div>
 
               <button
-                type="submit"
+                type="submit" onClick={handleSendMail}
                 className="bg-red-600 text-white px-6 py-2 rounded shadow hover:bg-red-700 transition duration-200"
               >
                 Submit
