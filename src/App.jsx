@@ -27,10 +27,10 @@ import Contact from "./page/Contact/Contact";
 import About from "./page/about/About";
 
 //  ProtectedRoute
-import ProtectedRoute from "./page/protectedRoute/ProtectedRoute";
+// import ProtectedRoute from "./page/protectedRoute/ProtectedRoute";
 import Login from "./page/login/Login";
 import Service from "./page/Service/Service";
-import Payment from "./page/checkout/payment";
+import Payment from "./page/checkout/Payment";
 
 
 const router = createBrowserRouter([
