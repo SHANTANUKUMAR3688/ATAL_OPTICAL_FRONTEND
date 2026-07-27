@@ -9,75 +9,74 @@ import { CiShop } from "react-icons/ci";
 import { FaUserDoctor } from "react-icons/fa6";
 import { IoNewspaperOutline } from "react-icons/io5";
 import { LuFlashlight } from "react-icons/lu";
+import { Link } from "react-router-dom";
+
 const ServicesContainer = () => {
   return (
     <>
-
+      <Link to="/service">
       <ServicesContaineHead
         icon={<GiSunglasses />}
         headText="Eye Wear Glasses"
         content="Eyeglasses have come a long way since they were first believed to have been made centuries ago"
         arrow={<FaArrowRight />}
-      />
+      /></Link>
 
-
-
+      <Link to="/service">
       <ServicesContaineHead
         icon={<GiMicroscopeLens />}
         headText="Contact Lens"
         content="Choose from our premium selection of contact lenses for a seamless blend of vision correction and modern aesthetics."
         arrow={<FaArrowRight />}
-      />
+      /></Link>
 
-
-
+      <Link to="/service">
       <ServicesContaineHead
         icon={<TbScanEye />}
         headText="Eye Exam"
         content="Get accurate prescriptions and expert care with quick, hassle-free eye checkups by certified professionals."
         arrow={<FaArrowRight />}
-      />
+      /></Link>
 
-
-
+      <Link to="/service">
       <ServicesContaineHead
         icon={<TbBasketDiscount />}
         headText="Promotions"
         content="Enjoy exciting discounts on sunglasses, contact lenses, and more. Limited-time offers to upgrade your style and save big!"
         arrow={<FaArrowRight />}
-      />
+      /></Link>
 
-
-
+      <Link to="/service">
       <ServicesContaineHead
         icon={<CiShop />}
         headText="Brands"
         content="Shop from leading names like Ray-Ban, Oakley, Vogue, Bausch & Lomb, and more — all in one place."
         arrow={<FaArrowRight />}
-      />
+      /></Link>
 
-
+      <Link to="/service">
       <ServicesContaineHead
         icon={<FaUserDoctor />}
         headText="Optometrists"
         content="Our certified optometrists offer professional eye care, accurate prescriptions, and personalized vision solutions."
         arrow={<FaArrowRight />}
-      />
-
+      /></Link>
+      
+      <Link to="/service">
       <ServicesContaineHead
         icon={<IoNewspaperOutline />}
         headText="Insurance Claims"
         content="Easily submit your vision insurance claims with our support team by your side—fast, simple, and stress-free."
         arrow={<FaArrowRight />}
-      />
+      /></Link>
 
-
+      <Link to="/service">
       <ServicesContaineHead
         icon={<LuFlashlight />}
-        headText="Blue Light Technology"
+        headText="Light Technology"
         content="Shield your eyes from digital strain with lenses that block harmful blue light—perfect for screen-heavy lifestyles."
         arrow={<FaArrowRight />}
-      />
+      /></Link>
     </>
   )
 }

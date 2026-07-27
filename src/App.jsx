@@ -1,37 +1,48 @@
-
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Home from "./page/Home/Home";
-import Page from "./page/Page";
-import Layout from "./layout/Layout";
-import Cartpage from "./page/Cart/Cartpage";
-import FAQ from "./page/FAQ/FAQ";
-import PrivacyPolicy from "./page/Privacy-Policy/PrivacyPolicy";
-import DisclaimerPage from './page/DisclaimerPage/DisclaimerPage';
-import TermsAndConditions from "./page/terms&condition/TermsAndConditions";
-import LimitationOfLiability from "./page/limitationOfLiability/Liability";
-import GeneralInformation from "./page/generalInformation/generalInfo";
-import EyeglassesContactPolicy from "./page/eyeglasses-contact-policy/EyeglassesContactPolicy";
-import RightsEnforcementPolicy from "./page/rights-enforcement-policy/RightsEnforcementPolicy";
-import Dashboardlayout from "./layout/Dashboardlayout";
-import Faq from "./components/Faq";
-import CustHome from "./components/CustHome";
-import ViewCart from "./page/Cart/ViewCart";
-import Product from "./page/allproduct/Product";
 
-import InsuranceClaimForm from "./page/form/InsuranceClaimForm";
-import DocumentUploadForm from "./page/form/DocumentUploadForm";
-import OrderPlaced from "./page/order/OrderPlaced";
-import Register from "./page/register/Register";
-import Contact from "./page/Contact/Contact";
-import About from "./page/about/About";
+// Layouts
+const Layout = lazy(() => import("./layout/Layout"));
+const Dashboardlayout = lazy(() => import("./layout/Dashboardlayout"));
 
-//  ProtectedRoute
-// import ProtectedRoute from "./page/protectedRoute/ProtectedRoute";
-import Login from "./page/login/Login";
-import Service from "./page/Service/Service";
-import Payment from "./page/checkout/Payment";
+// Pages
+const Home = lazy(() => import("./page/Home/Home"));
+const Page = lazy(() => import("./page/Page"));
+const Cartpage = lazy(() => import("./page/Cart/Cartpage"));
+const FAQ = lazy(() => import("./page/FAQ/FAQ"));
+const PrivacyPolicy = lazy(() => import("./page/Privacy-Policy/PrivacyPolicy"));
+const DisclaimerPage = lazy(() =>
+  import("./page/DisclaimerPage/DisclaimerPage")
+);
+const TermsAndConditions = lazy(() =>
+  import("./page/terms&condition/TermsAndConditions")
+);
+const LimitationOfLiability = lazy(() =>
+  import("./page/limitationOfLiability/Liability")
+);
+const GeneralInformation = lazy(() =>
+  import("./page/generalInformation/generalInfo")
+);
+const EyeglassesContactPolicy = lazy(() =>
+  import("./page/eyeglasses-contact-policy/EyeglassesContactPolicy")
+);
+const RightsEnforcementPolicy = lazy(() =>
+  import("./page/rights-enforcement-policy/RightsEnforcementPolicy")
+);
+const Product = lazy(() => import("./page/allproduct/Product"));
+const OrderPlaced = lazy(() => import("./page/order/OrderPlaced"));
+const Register = lazy(() => import("./page/register/Register"));
+const Contact = lazy(() => import("./page/Contact/Contact"));
+const About = lazy(() => import("./page/about/About"));
+const Login = lazy(() => import("./page/login/Login"));
+const Service = lazy(() => import("./page/Service/Service"));
+const Payment = lazy(() => import("./page/checkout/Payment"));
+const ViewCart = lazy(() => import("./page/Cart/ViewCart"));
 
+// Components
+const Faq = lazy(() => import("./components/Faq"));
+const CustHome = lazy(() => import("./components/CustHome"));
+import Loader from "./components/Loader";
 
 const router = createBrowserRouter([
   {
@@ -39,78 +50,40 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       { path: "/", element: <Home /> },
-      
       { path: "/faq", element: <FAQ /> },
-      { path: "/contact", element: <Contact/> },
-      { path: "/about", element: <About/> },
-      { path: "/service", element: <Service/> },
+      { path: "/contact", element: <Contact /> },
+      { path: "/about", element: <About /> },
+      { path: "/service", element: <Service /> },
       { path: "/privacy-policy", element: <PrivacyPolicy /> },
       { path: "/allproduct", element: <Product /> },
-      { path: "/disclaimer", element: <DisclaimerPage /> },
-      { path: "/termsandcondition", element: <TermsAndConditions /> },
-      { path: "/liability", element: <LimitationOfLiability /> },
-      { path: "/general-info", element: <GeneralInformation /> },
-      { path: "/eyeglasses-contact-policy", element: <EyeglassesContactPolicy /> },
-      { path: "/rights-enforcement-policy", element: <RightsEnforcementPolicy /> },
 
-      // ✅ Protected Routes
+      // Protected Routes
       {
         path: "/cart",
-        element: (
-          // <ProtectedRoute>
-          <Cartpage />
-          // </ProtectedRoute>
-        ),
+        element: <Cartpage />,
       },
       {
         path: "/viewcart",
-        element: (
-          // <ProtectedRoute>
-          <ViewCart />
-          // </ProtectedRoute>
-        ),
+        element: <ViewCart />,
       },
       {
         path: "/checkout",
-        element: (
-          // <ProtectedRoute>
-          <Payment/>
-          // </ProtectedRoute>
-        ),
+        element: <Payment />,
       },
-      {
-
-        path: "/form",
-        element: <InsuranceClaimForm/>,
-      },
-      {
-        path: "/form-new",
-        element: <DocumentUploadForm/>,
-      },
-
       {
         path: "/place-order",
-        element: (
-          // <ProtectedRoute>
-          <OrderPlaced />
-          // </ProtectedRoute>
-        ),
+        element: <OrderPlaced />,
       },
-
       { path: "*", element: <Page /> },
     ],
   },
-    { path: "/register", element: <Register /> },
-    { path: "/login", element: <Login /> },
 
-  // ✅ Protected Dashboard
+  { path: "/register", element: <Register /> },
+  { path: "/login", element: <Login /> },
+
   {
     path: "/dash",
-    element: (
-      // <ProtectedRoute>
-        <Dashboardlayout />
-      //</ProtectedRoute>
-    ),
+    element: <Dashboardlayout />,
     children: [
       { path: "/dash", element: <CustHome /> },
       { path: "/dash/faq", element: <Faq /> },
@@ -120,7 +93,11 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <Suspense fallback={<Loader />}>
+      <RouterProvider router={router} />
+    </Suspense>
+  );
 }
 
 export default App;
