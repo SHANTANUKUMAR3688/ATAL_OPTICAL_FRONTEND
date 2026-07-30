@@ -7,10 +7,12 @@ import logo from "../../assets/category/logo.png";
 import { signInWithPopup } from "firebase/auth";
 import { auth, googleProvider } from "../../components/firebase";
 import { FcGoogle } from "react-icons/fc";
+import Swal from "sweetalert2";
+
 function Login() {
   const navigate = useNavigate();
   const [passwordVisible, setPasswordVisible] = useState(false);
- 
+
   const [data, setData] = useState({
     email: "",
     password: "",
@@ -36,9 +38,17 @@ function Login() {
         email: "",
         password: "",
       });
-    //sessionStorage.setItem("id",response.data.customer.id);
+      //sessionStorage.setItem("id",response.data.customer.id);
+      Swal.fire({
+        toast: true,
+        position: "top-end",
+        icon: "success",
+        title: "Login successful!",
+        showConfirmButton: false,
+        timer: 3000,
+      });
       navigate("/", { replace: true });
-      console.log(response.data);
+      //console.log(response.data);
     } catch (err) {
       const message = err.response?.data?.message || "login failed";
       alert(message);
@@ -50,7 +60,7 @@ function Login() {
     try {
       const result = await signInWithPopup(auth, googleProvider);
       const user = result.user;
-      console.log(user);
+      //console.log(user);
       navigate("/");
     } catch (error) {
       console.error("Google sign-in error:", error);
@@ -107,18 +117,20 @@ function Login() {
 
               <button
                 onClick={handlesubmit}
-                className="mt-4 rounded-md bg-red-500 px-6 py-2 text-xl font-semibold text-white hover:bg-red-600 hover:shadow-lg active:bg-red-700 active:shadow-lg hover:rounded-full transition duration-200 ease-in-out"
+                className="mt-4 rounded-md bg-red-500 px-6 py-2 text-xl font-semibold text-white hover:bg-blue-500 hover:shadow-lg active:bg-blue-700 active:shadow-lg hover:rounded-full transition duration-200 ease-in-out hover:cursor-pointer"
               >
                 Login
               </button>
               <span className="ml-4">
                 If not registered,{" "}
-                <a href="/register" className="text-blue-500 hover:underline">
+                <a href="/register" className="text-red-500 hover:underline hover:text-blue-500">
                   Register
                 </a>
               </span>
-              <div className="text-xl font-semibold ml-26">OR</div>
-              <div className="flex justify-center items-center gap-2 bg-blue-500 rounded-md px-4 py-2 mt-4 hover:bg-blue-600 hover:shadow-lg active:bg-blue-700 active:shadow-lg transition duration-200 ease-in-out">
+              <div className="text-center text-xl font-semibold">
+                 OR
+              </div>
+              <div className="flex justify-center items-center gap-2 bg-blue-500 rounded-md px-4 py-2 mt-4 hover:bg-blue-600 hover:shadow-lg active:bg-blue-700 active:shadow-lg transition duration-200 ease-in-out hover:cursor-pointer">
                 <span>
                   <FcGoogle className="text-xl" />
                 </span>

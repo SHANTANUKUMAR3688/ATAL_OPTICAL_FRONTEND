@@ -8,27 +8,10 @@ const Dashboardlayout = lazy(() => import("./layout/Dashboardlayout"));
 // Pages
 const Home = lazy(() => import("./page/Home/Home"));
 const Page = lazy(() => import("./page/Page"));
-const Cartpage = lazy(() => import("./page/Cart/Cartpage"));
+// const Cartpage = lazy(() => import("./page/Cart/Cartpage"));
 const FAQ = lazy(() => import("./page/FAQ/FAQ"));
 const PrivacyPolicy = lazy(() => import("./page/Privacy-Policy/PrivacyPolicy"));
-const DisclaimerPage = lazy(() =>
-  import("./page/DisclaimerPage/DisclaimerPage")
-);
-const TermsAndConditions = lazy(() =>
-  import("./page/terms&condition/TermsAndConditions")
-);
-const LimitationOfLiability = lazy(() =>
-  import("./page/limitationOfLiability/Liability")
-);
-const GeneralInformation = lazy(() =>
-  import("./page/generalInformation/generalInfo")
-);
-const EyeglassesContactPolicy = lazy(() =>
-  import("./page/eyeglasses-contact-policy/EyeglassesContactPolicy")
-);
-const RightsEnforcementPolicy = lazy(() =>
-  import("./page/rights-enforcement-policy/RightsEnforcementPolicy")
-);
+
 const Product = lazy(() => import("./page/allproduct/Product"));
 const OrderPlaced = lazy(() => import("./page/order/OrderPlaced"));
 const Register = lazy(() => import("./page/register/Register"));
@@ -56,12 +39,12 @@ const router = createBrowserRouter([
       { path: "/service", element: <Service /> },
       { path: "/privacy-policy", element: <PrivacyPolicy /> },
       { path: "/allproduct", element: <Product /> },
-
+      
       // Protected Routes
-      {
-        path: "/cart",
-        element: <Cartpage />,
-      },
+      // {
+      //   path: "/cart",
+      //   element: <Cartpage />,
+      // },
       {
         path: "/viewcart",
         element: <ViewCart />,
@@ -74,6 +57,7 @@ const router = createBrowserRouter([
         path: "/place-order",
         element: <OrderPlaced />,
       },
+
       { path: "*", element: <Page /> },
     ],
   },
