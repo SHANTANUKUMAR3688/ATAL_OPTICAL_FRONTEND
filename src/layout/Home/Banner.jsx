@@ -25,7 +25,9 @@ function Banner() {
     autoplay: true,
     speed: 1000,
     autoplaySpeed: 3000,
-    pauseOnHover: false
+    pauseOnHover: false,
+    fade: true,
+    cssEase: "linear",
   };
 
   return (
