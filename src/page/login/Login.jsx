@@ -38,7 +38,7 @@ function Login() {
         email: "",
         password: "",
       });
-      //sessionStorage.setItem("id",response.data.customer.id);
+      localStorage.setItem("id",response.data.customer.id);
       Swal.fire({
         toast: true,
         position: "top-end",
@@ -60,6 +60,7 @@ function Login() {
     try {
       const result = await signInWithPopup(auth, googleProvider);
       const user = result.user;
+      localStorage.setItem("id", user.displayName);
       //console.log(user);
       navigate("/");
     } catch (error) {

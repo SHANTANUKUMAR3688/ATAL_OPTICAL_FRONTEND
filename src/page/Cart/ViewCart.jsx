@@ -22,10 +22,54 @@ const ViewCart = () => {
     navigate("/checkout")
   }
   
-  const handlePayment = async () => {
-    const { data } = await API.post("/payment/create-order",
-      { amount: subtotal.toFixed(2) }
-    );
+  // const handlePayment = async () => {
+  //   const { data } = await API.post("/payment/create-order",
+  //     { amount: subtotal.toFixed(2) }
+  //   );
+
+  //   const options = {
+  //     key: "rzp_test_SM2jjIdLh0zHNR",
+  //     amount: data.order.amount,
+  //     currency: "INR",
+  //     name: "Shantanu Store",
+  //     description: "Test Transaction",
+  //     order_id: data.order.id,
+  //     handler: async function (response) {
+  //       await API.post("/payment/verify-payment",response);
+  //       Swal.fire({
+  //         title: "Payment Successful!",
+  //         text: "Your payment has been processed successfully.",
+  //         icon: "success"
+  //       });
+  //     },
+  //     prefill: {
+  //       name: "Shantanu",
+  //       email: "test@gmail.com",
+  //       contact: "9999999999",
+  //     },
+  //     theme: {
+  //       color: "#3399cc",
+  //     },
+  //   };
+  //   const rzp = new Razorpay(options);
+  //   rzp.open();
+  //   navigate("/checkout")
+  // };
+
+   const handlePayment = async () => {
+  // Check if user is logged in
+  const userId = localStorage.getItem("id");
+
+  if (!userId) {
+    navigate("/login");
+    return;
+  }
+
+  try {
+    // Create Razorpay order
+    const { data } = await API.post("/payment/create-order", {
+      amount: subtotal.toFixed(2),
+    });
 
     const options = {
       key: "rzp_test_SM2jjIdLh0zHNR",
@@ -34,27 +78,71 @@ const ViewCart = () => {
       name: "Shantanu Store",
       description: "Test Transaction",
       order_id: data.order.id,
-      handler: async function (response) {
-        await API.post("/payment/verify-payment",response);
+
+      // This runs only when Razorpay reports a successful payment
+      handler: function (response) {
+        console.log("Payment successful:", response);
+
         Swal.fire({
           title: "Payment Successful!",
           text: "Your payment has been processed successfully.",
-          icon: "success"
+          icon: "success",
+        }).then(() => {
+          // Navigate only after successful payment
+          navigate("/checkout");
         });
       },
+
+      // Payment failed
+      modal: {
+        ondismiss: function () {
+          console.log("Payment cancelled by user");
+          // Do not navigate
+        },
+      },
+
       prefill: {
         name: "Shantanu",
         email: "test@gmail.com",
         contact: "9999999999",
       },
+
       theme: {
         color: "#3399cc",
       },
     };
+
     const rzp = new Razorpay(options);
+
+    // Handle payment failure
+    rzp.on("payment.failed", function (response) {
+      console.log("Payment failed:", response.error);
+
+      Swal.fire({
+        title: "Payment Failed!",
+        text: "Your payment was not completed.",
+        icon: "error",
+      });
+
+      // Do not navigate
+    });
+
+    // Open Razorpay
     rzp.open();
-    navigate("/checkout")
-  };
+
+  } catch (error) {
+    console.error("Payment error:", error);
+
+    Swal.fire({
+      title: "Error!",
+      text: "Unable to create payment order.",
+      icon: "error",
+    });
+
+    // Do not navigate
+  }
+};
+
   return (
     <div className="container mx-auto px-4 py-10">
       <h2 className="text-3xl font-bold mb-8">Your Shopping Cart</h2>

@@ -1,11 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  FaUser,
-  FaHeart,
-  FaSearch,
-  FaFacebookF,
-  FaYoutube,
-} from "react-icons/fa";
+import {FaUser,FaHeart,FaSearch,FaFacebookF,FaYoutube,} from "react-icons/fa";
 import { FaSquareInstagram, FaBars } from "react-icons/fa6";
 import { FaCartShopping } from "react-icons/fa6";
 import { Link, useNavigate } from "react-router-dom";
@@ -24,7 +18,7 @@ function Header() {
   );
 
   // auth state from redux (example: state.auth.user)
-  const user = localStorage.getItem("user");
+  const user = localStorage.getItem("id");
 
   const [cartOpen, setCartOpen] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -55,9 +49,9 @@ function Header() {
   };
 
   const handleLogout = () => {
-    dispatch({ type: "LOGOUT" });
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
+    //dispatch({ type: "LOGOUT" });
+    //localStorage.removeItem("token");
+    localStorage.removeItem("id");
     navigate("/");
   };
 
@@ -134,7 +128,7 @@ function Header() {
                 {/* logout button */}
                 <button
                   onClick={handleLogout}
-                  className="px-4 py-2 rounded-lg bg-red-600 text-white text-sm hover:bg-black"
+                  className="px-4 py-2 rounded-lg bg-red-600 text-white text-sm hover:bg-black hover:cursor-pointer"
                 >
                   Logout
                 </button>
