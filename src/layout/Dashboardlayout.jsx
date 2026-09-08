@@ -1,5 +1,4 @@
 import { Link, Outlet, useLocation } from "react-router-dom";
-// import logo from '../assets/image/logo.png'
 export default function Dashboardlayout() {
     const location = useLocation();
 
@@ -14,7 +13,6 @@ export default function Dashboardlayout() {
             {/* Sidebar */}
             <div className="w-64 bg-white shadow-lg p-5">
                 <h2 className="text-xl font-bold mb-6">ATAL-OPTICALS</h2>
-                {/* <img src={logo} className="w-36 ml-10" /> */}
                 <nav className="space-y-2 text-center text-lg font-semibold mt-4">
                     {menuItems.map((item) => (
                         <Link

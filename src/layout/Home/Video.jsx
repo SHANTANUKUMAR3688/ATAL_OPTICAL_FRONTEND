@@ -6,6 +6,7 @@ function Video() {
       <video
         className="shadow-md "
         // controls
+        preload='metadata'
         autoPlay
         muted
         loop

@@ -7,22 +7,22 @@ import menframe from "../../assets/frame/menframe.jpg";
 import womenframe from "../../assets/frame/woman.jpg";
 
 const Frames = () => {
-  const [frameData, setFrameData] = useState([]);
+  // const [frameData, setFrameData] = useState([]);
 
-  const getAllFrames = async () => {
-    try {
-      const res = await API.get(
-        "/getBySubCategory/Shop By Category"
-      );
-      setFrameData(res.data.subcategories);
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  // const getAllFrames = async () => {
+  //   try {
+  //     const res = await API.get(
+  //       "/getBySubCategory/Shop By Category"
+  //     );
+  //     setFrameData(res.data.subcategories);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
 
-  useEffect(() => {
-    getAllFrames();
-  }, []);
+  // useEffect(() => {
+  //   getAllFrames();
+  // }, []);
 
   return (
     <div className="py-16 md:pl-12 mb-14 mx-6 md:mx-0">

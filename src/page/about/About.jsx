@@ -2,7 +2,7 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import about1 from "../../assets/about/about-1.webp";
 import about2 from "../../assets/about/about-2.webp";
-import about3 from "../../assets/about/about-3.jpeg";
+import about3 from "../../assets/about/about-3.jpg";
 import about from "../../assets/about/optical-store.jpg";
 function About() {
   const textRef = useRef();

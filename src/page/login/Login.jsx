@@ -2,7 +2,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import API from "../../API/Api";
-import land from "../../assets/category/land.avif";
+import land from "../../assets/category/land.jpg";
 import logo from "../../assets/category/logo.png";
 import { signInWithPopup } from "firebase/auth";
 import { auth, googleProvider } from "../../components/firebase";

@@ -38,8 +38,8 @@ function Banner() {
             <div key={index} className="relative">
               <img
                 src={item.img}
-                loading="lazy"
-                decoding="async"
+                fetchPriority="high"
+                loading="eager"
                 className="w-full h-auto object-cover items-center justify-center"
                 alt={`slider-${index}`}
               />

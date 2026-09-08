@@ -8,7 +8,6 @@ const Dashboardlayout = lazy(() => import("./layout/Dashboardlayout"));
 // Pages
 const Home = lazy(() => import("./page/Home/Home"));
 const Page = lazy(() => import("./page/Page"));
-// const Cartpage = lazy(() => import("./page/Cart/Cartpage"));
 const FAQ = lazy(() => import("./page/FAQ/FAQ"));
 const PrivacyPolicy = lazy(() => import("./page/Privacy-Policy/PrivacyPolicy"));
 
@@ -39,12 +38,6 @@ const router = createBrowserRouter([
       { path: "/service", element: <Service /> },
       { path: "/privacy-policy", element: <PrivacyPolicy /> },
       { path: "/allproduct", element: <Product /> },
-      
-      // Protected Routes
-      // {
-      //   path: "/cart",
-      //   element: <Cartpage />,
-      // },
       {
         path: "/viewcart",
         element: <ViewCart />,
